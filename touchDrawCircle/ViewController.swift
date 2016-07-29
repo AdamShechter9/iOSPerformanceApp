@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     let mySynth = simpleSynthClass(amp: 0.5, freq: 220)
-    
+    var swiped = false
+    var lastPoint = CGPoint.zero
     
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var imageView1: UIImageView!
@@ -31,15 +32,14 @@ class ViewController: UIViewController {
         print(location.y)
         generateRadial(location)
         
-        var newnote = convert(Double(location.y), screenY0: Double(self.view.frame.height) , screenY1: 0.0, dataY0: 5000, dataY1: 20)
-//        var note = abs(Double(location.y / view.frame.height) - 1.0)
-//        note *= 2000
-//        print(note)
-//        mySynth.noteOnSynth(note)
-        print("log scale result \(newnote)")
+        var note = abs(Double(location.y / view.frame.height) - 1.0)
+        note = pow((note * 50), 2) + 50
+        print(note)
+        mySynth.noteOnSynth(note)
+        print("log scale result \(note)")
         if panRecognizer.state == UIGestureRecognizerState.Ended
         {
-            // mySynth.noteOffSynth()
+             mySynth.noteOffSynth()
             print("fading out")
             circleFadeOut()
             backgroundAnimEnd()
@@ -49,23 +49,27 @@ class ViewController: UIViewController {
 
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        swiped = false
         if let touch = touches.first as UITouch! {
             let location = touch.locationInView(self.view)
+            lastPoint = touch.locationInView(self.view)
             generateRadial(location)
             print("fading in")
             circleFadeIn()
             backgroundAnimStart()
-//            var note = abs(Double(location.y / view.frame.height) - 1.0)
-//            note *= 2000
-//            print(note)
-//            mySynth.noteOnSynth(note)
+            var note = abs(Double(location.y / view.frame.height) - 1.0)
+            note = pow((note * 50), 2) + 50
+            print(note)
+            mySynth.noteOnSynth(note)
         }
-
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
     }
     
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        // mySynth.noteOffSynth()
+        mySynth.noteOffSynth()
         print("fading out")
         circleFadeOut()
         backgroundAnimEnd()
@@ -148,7 +152,7 @@ class ViewController: UIViewController {
         fadeIn.delegate = imageView1
         fadeIn.fromValue = 0
         fadeIn.toValue = 1
-        fadeIn.duration = 0.5
+        fadeIn.duration = 0.3
         imageView1.layer.addAnimation(fadeIn, forKey: "fade")
     }
     
@@ -158,7 +162,7 @@ class ViewController: UIViewController {
         fadeOut.delegate = imageView1
         fadeOut.fromValue = 1
         fadeOut.toValue = 0
-        fadeOut.duration = 0.5
+        fadeOut.duration = 0.3
         // fadeOut.fillMode = kCAFillModeForwards
         fadeOut.fillMode = kCAFillModeForwards
         fadeOut.removedOnCompletion = false
@@ -173,7 +177,7 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.view.backgroundColor = UIColor.blackColor()
             }) { (Bool) -> Void in
-            UIView.animateWithDuration(0.4, animations: { () -> Void in
+            UIView.animateWithDuration(0.2, animations: { () -> Void in
                 self.view.backgroundColor = UIColor.init(colorLiteralRed: redRandom, green: grnRandom, blue: bluRandom, alpha: 1)
                 }, completion: nil)
             }
@@ -188,7 +192,7 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.view.backgroundColor = UIColor.init(colorLiteralRed: redRandom, green: grnRandom, blue: bluRandom, alpha: 1)
             }) { (Bool) -> Void in
-                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                UIView.animateWithDuration(0.2, animations: { () -> Void in
                     self.view.backgroundColor = UIColor.blackColor()
                     }, completion:nil)
         }
@@ -204,10 +208,5 @@ class ViewController: UIViewController {
             }, completion: nil)
     }
     
-    
-    func convert(data: Double, screenY0:Double, screenY1:Double, dataY0:Double, dataY1:Double) ->Double{
-        
-        return screenY0 + (log((data)) - log((dataY0))) / (log((dataY1)) - log((dataY0))) * (screenY1 - screenY0)
-    }
 }
 
