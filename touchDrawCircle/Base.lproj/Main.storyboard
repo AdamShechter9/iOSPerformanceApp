@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="touchDrawCircle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,52 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-pY-rwH" userLabel="backimg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d0n-hW-KCu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Nfw-Kj-zHN" appends="YES" id="Pj2-M1-w0b"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="d0n-hW-KCu" secondAttribute="trailing" constant="-20" id="7ug-6W-bGP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7vi-pY-rwH" secondAttribute="trailing" constant="-20" id="8iC-nT-0Ac"/>
+                            <constraint firstItem="d0n-hW-KCu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Bsu-pQ-NpP"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7vi-pY-rwH" secondAttribute="bottom" id="Ch5-Ui-1wc"/>
+                            <constraint firstItem="7vi-pY-rwH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Kc4-6e-vhc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d0n-hW-KCu" secondAttribute="bottom" id="P32-7i-CCD"/>
+                            <constraint firstItem="d0n-hW-KCu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Px5-N8-ejM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d0n-hW-KCu" secondAttribute="trailing" id="ewe-yk-UIb"/>
+                            <constraint firstItem="7vi-pY-rwH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="pOo-pe-Q2r"/>
+                            <constraint firstItem="d0n-hW-KCu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rXs-2Z-Ll1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ewe-yk-UIb"/>
+                                <exclude reference="rXs-2Z-Ll1"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="backImageView" destination="7vi-pY-rwH" id="EuS-qh-ioD"/>
+                        <outlet property="imageView1" destination="d0n-hW-KCu" id="TFz-Sq-O7I"/>
+                        <outlet property="panRecognizer" destination="Nfw-Kj-zHN" id="Xmf-e9-Lfr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="Nfw-Kj-zHN">
+                    <connections>
+                        <action selector="panGestureAction:" destination="BYZ-38-t0r" id="X39-8W-dwU"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="305" y="429"/>
         </scene>
     </scenes>
 </document>

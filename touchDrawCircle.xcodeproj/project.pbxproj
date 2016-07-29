@@ -14,6 +14,9 @@
 		A51596831D49AC2500402B66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51596811D49AC2500402B66 /* LaunchScreen.storyboard */; };
 		A515968E1D49AC2500402B66 /* touchDrawCircleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A515968D1D49AC2500402B66 /* touchDrawCircleTests.swift */; };
 		A51596991D49AC2500402B66 /* touchDrawCircleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51596981D49AC2500402B66 /* touchDrawCircleUITests.swift */; };
+		A51596A91D4AC18D00402B66 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51596A81D4AC18D00402B66 /* AudioKit.framework */; };
+		A51596AA1D4AC18D00402B66 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A51596A81D4AC18D00402B66 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A51596AD1D4AC1AC00402B66 /* simpleSynthClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A51596AB1D4AC18D00402B66 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A51596AA1D4AC18D00402B66 /* AudioKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A51596751D49AC2500402B66 /* touchDrawCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touchDrawCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51596781D49AC2500402B66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +64,8 @@
 		A51596941D49AC2500402B66 /* touchDrawCircleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = touchDrawCircleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51596981D49AC2500402B66 /* touchDrawCircleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = touchDrawCircleUITests.swift; sourceTree = "<group>"; };
 		A515969A1D49AC2500402B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A51596A81D4AC18D00402B66 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
+		A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = simpleSynthClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51596A91D4AC18D00402B66 /* AudioKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +97,7 @@
 		A515966C1D49AC2500402B66 = {
 			isa = PBXGroup;
 			children = (
+				A51596A81D4AC18D00402B66 /* AudioKit.framework */,
 				A51596771D49AC2500402B66 /* touchDrawCircle */,
 				A515968C1D49AC2500402B66 /* touchDrawCircleTests */,
 				A51596971D49AC2500402B66 /* touchDrawCircleUITests */,
@@ -99,6 +120,7 @@
 			children = (
 				A51596781D49AC2500402B66 /* AppDelegate.swift */,
 				A515967A1D49AC2500402B66 /* ViewController.swift */,
+				A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */,
 				A515967C1D49AC2500402B66 /* Main.storyboard */,
 				A515967F1D49AC2500402B66 /* Assets.xcassets */,
 				A51596811D49AC2500402B66 /* LaunchScreen.storyboard */,
@@ -135,6 +157,7 @@
 				A51596711D49AC2500402B66 /* Sources */,
 				A51596721D49AC2500402B66 /* Frameworks */,
 				A51596731D49AC2500402B66 /* Resources */,
+				A51596AB1D4AC18D00402B66 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -193,6 +216,7 @@
 				TargetAttributes = {
 					A51596741D49AC2500402B66 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 42LTCX3AQU;
 					};
 					A51596881D49AC2500402B66 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -258,6 +282,7 @@
 			files = (
 				A515967B1D49AC2500402B66 /* ViewController.swift in Sources */,
 				A51596791D49AC2500402B66 /* AppDelegate.swift in Sources */,
+				A51596AD1D4AC1AC00402B66 /* simpleSynthClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,10 +426,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = touchDrawCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +444,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = touchDrawCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +523,7 @@
 				A515969F1D49AC2500402B66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A51596A01D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircleTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +532,7 @@
 				A51596A21D49AC2500402B66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A51596A31D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircleUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +541,7 @@
 				A51596A51D49AC2500402B66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
