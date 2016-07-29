@@ -17,6 +17,8 @@
 		A51596A91D4AC18D00402B66 /* AudioKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51596A81D4AC18D00402B66 /* AudioKit.framework */; };
 		A51596AA1D4AC18D00402B66 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A51596A81D4AC18D00402B66 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A51596AD1D4AC1AC00402B66 /* simpleSynthClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */; };
+		A51596AF1D4B17DF00402B66 /* samplerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51596AE1D4B17DF00402B66 /* samplerPlayer.swift */; };
+		A51596B31D4B22D700402B66 /* loop1.wav in Resources */ = {isa = PBXBuildFile; fileRef = A51596B21D4B22D700402B66 /* loop1.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +68,8 @@
 		A515969A1D49AC2500402B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A51596A81D4AC18D00402B66 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 		A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = simpleSynthClass.swift; sourceTree = "<group>"; };
+		A51596AE1D4B17DF00402B66 /* samplerPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = samplerPlayer.swift; sourceTree = "<group>"; };
+		A51596B21D4B22D700402B66 /* loop1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = loop1.wav; path = ../../../../xcode/projects/audiokit/smartPhoneRemixPrototype/smartPhoneRemixPrototype/loop1.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,12 +123,14 @@
 			isa = PBXGroup;
 			children = (
 				A51596781D49AC2500402B66 /* AppDelegate.swift */,
+				A51596AE1D4B17DF00402B66 /* samplerPlayer.swift */,
 				A515967A1D49AC2500402B66 /* ViewController.swift */,
 				A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */,
 				A515967C1D49AC2500402B66 /* Main.storyboard */,
 				A515967F1D49AC2500402B66 /* Assets.xcassets */,
 				A51596811D49AC2500402B66 /* LaunchScreen.storyboard */,
 				A51596841D49AC2500402B66 /* Info.plist */,
+				A51596B21D4B22D700402B66 /* loop1.wav */,
 			);
 			path = touchDrawCircle;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51596831D49AC2500402B66 /* LaunchScreen.storyboard in Resources */,
+				A51596B31D4B22D700402B66 /* loop1.wav in Resources */,
 				A51596801D49AC2500402B66 /* Assets.xcassets in Resources */,
 				A515967E1D49AC2500402B66 /* Main.storyboard in Resources */,
 			);
@@ -283,6 +290,7 @@
 				A515967B1D49AC2500402B66 /* ViewController.swift in Sources */,
 				A51596791D49AC2500402B66 /* AppDelegate.swift in Sources */,
 				A51596AD1D4AC1AC00402B66 /* simpleSynthClass.swift in Sources */,
+				A51596AF1D4B17DF00402B66 /* samplerPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

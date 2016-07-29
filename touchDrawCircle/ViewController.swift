@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import AudioKit
 
 class ViewController: UIViewController {
     
+    // let mySampler = samplerPlayer(loop: true, rate: 1, pitch: 1)
     let mySynth = simpleSynthClass(amp: 0.5, freq: 220)
     var swiped = false
     var lastPoint = CGPoint.zero
@@ -17,26 +19,39 @@ class ViewController: UIViewController {
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var imageView1: UIImageView!
     
+    @IBAction func playButtonPressed(sender: UIBarButtonItem) {
+        print("play button pressed")
+        // mySampler.playSamplerPlayer(true)
+        mySynth.playSamplerPlayer(true)
+    }
     
+    @IBAction func stopButtonPressed(sender: UIBarButtonItem) {
+        print("stop button pressed")
+        mySynth.playSamplerPlayer(false)
+    }
 // -----------------------------------------------------------------
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
 
     
     @IBAction func panGestureAction(sender: UIPanGestureRecognizer) {
-        let translation = panRecognizer.translationInView(self.view)
         panRecognizer.setTranslation(CGPointZero, inView: self.view)
-        print(translation.x)
-        print(translation.y)
         let location = panRecognizer.locationInView(self.view)
-        print(location.x)
-        print(location.y)
-        generateRadial(location)
+        print("location x \(location.x)")
+        print("location y \(location.y)")
         
-        var note = abs(Double(location.y / view.frame.height) - 1.0)
+        var adjustPoint = CGPoint()
+        adjustPoint.x = location.x
+        adjustPoint.y = location.y
+        adjustPoint.y *= 1.05
+        generateRadial(adjustPoint)
+        
+        var note = abs(Double(location.y / view.frame.height - 1.0))
         note = pow((note * 50), 2) + 50
         print(note)
         mySynth.noteOnSynth(note)
         print("log scale result \(note)")
+        let cutoff = Double(adjustPoint.x * 15)
+        mySynth.lpFilterFreq(cutoff)
         if panRecognizer.state == UIGestureRecognizerState.Ended
         {
              mySynth.noteOffSynth()
@@ -57,7 +72,7 @@ class ViewController: UIViewController {
             print("fading in")
             circleFadeIn()
             backgroundAnimStart()
-            var note = abs(Double(location.y / view.frame.height) - 1.0)
+            var note = abs(Double(location.y / view.frame.height - 1.0))
             note = pow((note * 50), 2) + 50
             print(note)
             mySynth.noteOnSynth(note)
@@ -163,9 +178,8 @@ class ViewController: UIViewController {
         fadeOut.fromValue = 1
         fadeOut.toValue = 0
         fadeOut.duration = 0.3
-        // fadeOut.fillMode = kCAFillModeForwards
         fadeOut.fillMode = kCAFillModeForwards
-        fadeOut.removedOnCompletion = false
+        fadeOut.removedOnCompletion = true
         imageView1.layer.addAnimation(fadeOut, forKey: "fade")
     }
     

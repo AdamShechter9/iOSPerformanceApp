@@ -19,36 +19,75 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-pY-rwH" userLabel="backimg">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="559"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d0n-hW-KCu">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="559"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Nfw-Kj-zHN" appends="YES" id="Pj2-M1-w0b"/>
                                 </connections>
                             </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vad-Db-PFr">
+                                <rect key="frame" x="0.0" y="559" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="settings" id="7Db-wS-wQA">
+                                        <connections>
+                                            <segue destination="CKk-sN-ADI" kind="presentation" id="9tL-If-0Qc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="PLAY" id="WE9-5G-7Pn">
+                                        <connections>
+                                            <action selector="playButtonPressed:" destination="BYZ-38-t0r" id="dN7-dh-qPq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="STOP" id="jtE-iQ-Rna">
+                                        <connections>
+                                            <action selector="stopButtonPressed:" destination="BYZ-38-t0r" id="I9s-1v-hnl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="7vi-pY-rwH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="74c-ca-3Pm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d0n-hW-KCu" secondAttribute="trailing" constant="-20" id="7ug-6W-bGP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="7vi-pY-rwH" secondAttribute="trailing" constant="-20" id="8iC-nT-0Ac"/>
+                            <constraint firstItem="vad-Db-PFr" firstAttribute="top" secondItem="d0n-hW-KCu" secondAttribute="bottom" id="8it-zc-iZc"/>
                             <constraint firstItem="d0n-hW-KCu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Bsu-pQ-NpP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7vi-pY-rwH" secondAttribute="bottom" id="Ch5-Ui-1wc"/>
+                            <constraint firstItem="vad-Db-PFr" firstAttribute="top" secondItem="d0n-hW-KCu" secondAttribute="bottom" id="JVG-ng-ZRk"/>
                             <constraint firstItem="7vi-pY-rwH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Kc4-6e-vhc"/>
+                            <constraint firstItem="vad-Db-PFr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="LhP-ek-4wm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d0n-hW-KCu" secondAttribute="bottom" id="P32-7i-CCD"/>
                             <constraint firstItem="d0n-hW-KCu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Px5-N8-ejM"/>
+                            <constraint firstItem="vad-Db-PFr" firstAttribute="top" secondItem="7vi-pY-rwH" secondAttribute="bottom" id="QSm-zs-QWF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d0n-hW-KCu" secondAttribute="trailing" id="ewe-yk-UIb"/>
+                            <constraint firstItem="d0n-hW-KCu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gGF-zj-5VP"/>
+                            <constraint firstItem="7vi-pY-rwH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lI9-Hf-ajG"/>
                             <constraint firstItem="7vi-pY-rwH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="pOo-pe-Q2r"/>
+                            <constraint firstItem="d0n-hW-KCu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="rDU-0Q-9XX"/>
                             <constraint firstItem="d0n-hW-KCu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rXs-2Z-Ll1"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="vad-Db-PFr" secondAttribute="bottom" constant="-3" id="ssW-D7-GSi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vad-Db-PFr" secondAttribute="trailing" constant="-20" id="wjK-Wf-eoY"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Kc4-6e-vhc"/>
+                                <exclude reference="lI9-Hf-ajG"/>
+                                <exclude reference="Px5-N8-ejM"/>
                                 <exclude reference="ewe-yk-UIb"/>
+                                <exclude reference="gGF-zj-5VP"/>
                                 <exclude reference="rXs-2Z-Ll1"/>
+                                <exclude reference="Ch5-Ui-1wc"/>
+                                <exclude reference="P32-7i-CCD"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="h69-IW-mib">
+                        <barButtonItem key="rightBarButtonItem" title="Player" id="qbW-K4-uEa"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="backImageView" destination="7vi-pY-rwH" id="EuS-qh-ioD"/>
                         <outlet property="imageView1" destination="d0n-hW-KCu" id="TFz-Sq-O7I"/>
@@ -62,7 +101,25 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="305" y="429"/>
+            <point key="canvasLocation" x="1093" y="456"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="KUb-zK-qGR">
+            <objects>
+                <viewController id="CKk-sN-ADI" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Oq-Lr-01n"/>
+                        <viewControllerLayoutGuide type="bottom" id="EFu-RI-kBm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kM9-uY-i0r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cEN-ys-2tR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1783" y="456"/>
         </scene>
     </scenes>
 </document>
