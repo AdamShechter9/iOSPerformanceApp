@@ -18,7 +18,11 @@
 		A51596AA1D4AC18D00402B66 /* AudioKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A51596A81D4AC18D00402B66 /* AudioKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A51596AD1D4AC1AC00402B66 /* simpleSynthClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */; };
 		A51596AF1D4B17DF00402B66 /* samplerPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51596AE1D4B17DF00402B66 /* samplerPlayer.swift */; };
-		A51596B31D4B22D700402B66 /* loop1.wav in Resources */ = {isa = PBXBuildFile; fileRef = A51596B21D4B22D700402B66 /* loop1.wav */; };
+		A51596B61D4BCF9100402B66 /* loop1.wav in Resources */ = {isa = PBXBuildFile; fileRef = A51596B41D4BCF9100402B66 /* loop1.wav */; };
+		A51596B71D4BCF9100402B66 /* loop2.wav in Resources */ = {isa = PBXBuildFile; fileRef = A51596B51D4BCF9100402B66 /* loop2.wav */; };
+		A56EE17B1D4BDE8100189B22 /* loop3.wav in Resources */ = {isa = PBXBuildFile; fileRef = A56EE17A1D4BDE8100189B22 /* loop3.wav */; };
+		A56EE17D1D4BDEFE00189B22 /* loop4.wav in Resources */ = {isa = PBXBuildFile; fileRef = A56EE17C1D4BDEFE00189B22 /* loop4.wav */; };
+		A56EE17F1D4BF10E00189B22 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56EE17E1D4BF10E00189B22 /* settingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,23 +57,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A51596751D49AC2500402B66 /* touchDrawCircle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touchDrawCircle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51596751D49AC2500402B66 /* TouchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51596781D49AC2500402B66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A515967A1D49AC2500402B66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A515967D1D49AC2500402B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A515967F1D49AC2500402B66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A51596821D49AC2500402B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A51596841D49AC2500402B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A51596891D49AC2500402B66 /* touchDrawCircleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = touchDrawCircleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51596891D49AC2500402B66 /* TouchPlay.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchPlay.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A515968D1D49AC2500402B66 /* touchDrawCircleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = touchDrawCircleTests.swift; sourceTree = "<group>"; };
 		A515968F1D49AC2500402B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A51596941D49AC2500402B66 /* touchDrawCircleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = touchDrawCircleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51596941D49AC2500402B66 /* TouchPlay.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchPlay.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51596981D49AC2500402B66 /* touchDrawCircleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = touchDrawCircleUITests.swift; sourceTree = "<group>"; };
 		A515969A1D49AC2500402B66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A51596A81D4AC18D00402B66 /* AudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioKit.framework; sourceTree = "<group>"; };
 		A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = simpleSynthClass.swift; sourceTree = "<group>"; };
 		A51596AE1D4B17DF00402B66 /* samplerPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = samplerPlayer.swift; sourceTree = "<group>"; };
-		A51596B21D4B22D700402B66 /* loop1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = loop1.wav; path = ../../../../xcode/projects/audiokit/smartPhoneRemixPrototype/smartPhoneRemixPrototype/loop1.wav; sourceTree = "<group>"; };
+		A51596B41D4BCF9100402B66 /* loop1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = loop1.wav; path = "../../../../../Users/adamshechter/Music/flsm-35-free-drum-loops-midi-wav/80 bpm/wav/loop1.wav"; sourceTree = "<group>"; };
+		A51596B51D4BCF9100402B66 /* loop2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = loop2.wav; path = "../../../../../Users/adamshechter/Music/flsm-35-free-drum-loops-midi-wav/80 bpm/wav/loop2.wav"; sourceTree = "<group>"; };
+		A56EE17A1D4BDE8100189B22 /* loop3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = loop3.wav; sourceTree = "<group>"; };
+		A56EE17C1D4BDEFE00189B22 /* loop4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = loop4.wav; sourceTree = "<group>"; };
+		A56EE17E1D4BF10E00189B22 /* settingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +120,9 @@
 		A51596761D49AC2500402B66 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A51596751D49AC2500402B66 /* touchDrawCircle.app */,
-				A51596891D49AC2500402B66 /* touchDrawCircleTests.xctest */,
-				A51596941D49AC2500402B66 /* touchDrawCircleUITests.xctest */,
+				A51596751D49AC2500402B66 /* TouchPlay.app */,
+				A51596891D49AC2500402B66 /* TouchPlay.xctest */,
+				A51596941D49AC2500402B66 /* TouchPlay.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,10 +135,14 @@
 				A515967A1D49AC2500402B66 /* ViewController.swift */,
 				A51596AC1D4AC1AC00402B66 /* simpleSynthClass.swift */,
 				A515967C1D49AC2500402B66 /* Main.storyboard */,
+				A56EE17E1D4BF10E00189B22 /* settingsViewController.swift */,
 				A515967F1D49AC2500402B66 /* Assets.xcassets */,
 				A51596811D49AC2500402B66 /* LaunchScreen.storyboard */,
+				A56EE17C1D4BDEFE00189B22 /* loop4.wav */,
+				A56EE17A1D4BDE8100189B22 /* loop3.wav */,
 				A51596841D49AC2500402B66 /* Info.plist */,
-				A51596B21D4B22D700402B66 /* loop1.wav */,
+				A51596B41D4BCF9100402B66 /* loop1.wav */,
+				A51596B51D4BCF9100402B66 /* loop2.wav */,
 			);
 			path = touchDrawCircle;
 			sourceTree = "<group>";
@@ -156,9 +168,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A51596741D49AC2500402B66 /* touchDrawCircle */ = {
+		A51596741D49AC2500402B66 /* TouchPlay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A515969D1D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircle" */;
+			buildConfigurationList = A515969D1D49AC2500402B66 /* Build configuration list for PBXNativeTarget "TouchPlay" */;
 			buildPhases = (
 				A51596711D49AC2500402B66 /* Sources */,
 				A51596721D49AC2500402B66 /* Frameworks */,
@@ -169,14 +181,14 @@
 			);
 			dependencies = (
 			);
-			name = touchDrawCircle;
+			name = TouchPlay;
 			productName = touchDrawCircle;
-			productReference = A51596751D49AC2500402B66 /* touchDrawCircle.app */;
+			productReference = A51596751D49AC2500402B66 /* TouchPlay.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A51596881D49AC2500402B66 /* touchDrawCircleTests */ = {
+		A51596881D49AC2500402B66 /* TouchPlayTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A51596A01D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircleTests" */;
+			buildConfigurationList = A51596A01D49AC2500402B66 /* Build configuration list for PBXNativeTarget "TouchPlayTests" */;
 			buildPhases = (
 				A51596851D49AC2500402B66 /* Sources */,
 				A51596861D49AC2500402B66 /* Frameworks */,
@@ -187,14 +199,14 @@
 			dependencies = (
 				A515968B1D49AC2500402B66 /* PBXTargetDependency */,
 			);
-			name = touchDrawCircleTests;
+			name = TouchPlayTests;
 			productName = touchDrawCircleTests;
-			productReference = A51596891D49AC2500402B66 /* touchDrawCircleTests.xctest */;
+			productReference = A51596891D49AC2500402B66 /* TouchPlay.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A51596931D49AC2500402B66 /* touchDrawCircleUITests */ = {
+		A51596931D49AC2500402B66 /* TouchPlayUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A51596A31D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircleUITests" */;
+			buildConfigurationList = A51596A31D49AC2500402B66 /* Build configuration list for PBXNativeTarget "TouchPlayUITests" */;
 			buildPhases = (
 				A51596901D49AC2500402B66 /* Sources */,
 				A51596911D49AC2500402B66 /* Frameworks */,
@@ -205,9 +217,9 @@
 			dependencies = (
 				A51596961D49AC2500402B66 /* PBXTargetDependency */,
 			);
-			name = touchDrawCircleUITests;
+			name = TouchPlayUITests;
 			productName = touchDrawCircleUITests;
-			productReference = A51596941D49AC2500402B66 /* touchDrawCircleUITests.xctest */;
+			productReference = A51596941D49AC2500402B66 /* TouchPlay.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -234,7 +246,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A51596701D49AC2500402B66 /* Build configuration list for PBXProject "touchDrawCircle" */;
+			buildConfigurationList = A51596701D49AC2500402B66 /* Build configuration list for PBXProject "TouchPlay" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -247,9 +259,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A51596741D49AC2500402B66 /* touchDrawCircle */,
-				A51596881D49AC2500402B66 /* touchDrawCircleTests */,
-				A51596931D49AC2500402B66 /* touchDrawCircleUITests */,
+				A51596741D49AC2500402B66 /* TouchPlay */,
+				A51596881D49AC2500402B66 /* TouchPlayTests */,
+				A51596931D49AC2500402B66 /* TouchPlayUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -260,8 +272,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A51596831D49AC2500402B66 /* LaunchScreen.storyboard in Resources */,
-				A51596B31D4B22D700402B66 /* loop1.wav in Resources */,
+				A56EE17D1D4BDEFE00189B22 /* loop4.wav in Resources */,
 				A51596801D49AC2500402B66 /* Assets.xcassets in Resources */,
+				A51596B71D4BCF9100402B66 /* loop2.wav in Resources */,
+				A51596B61D4BCF9100402B66 /* loop1.wav in Resources */,
+				A56EE17B1D4BDE8100189B22 /* loop3.wav in Resources */,
 				A515967E1D49AC2500402B66 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56EE17F1D4BF10E00189B22 /* settingsViewController.swift in Sources */,
 				A515967B1D49AC2500402B66 /* ViewController.swift in Sources */,
 				A51596791D49AC2500402B66 /* AppDelegate.swift in Sources */,
 				A51596AD1D4AC1AC00402B66 /* simpleSynthClass.swift in Sources */,
@@ -315,12 +331,12 @@
 /* Begin PBXTargetDependency section */
 		A515968B1D49AC2500402B66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A51596741D49AC2500402B66 /* touchDrawCircle */;
+			target = A51596741D49AC2500402B66 /* TouchPlay */;
 			targetProxy = A515968A1D49AC2500402B66 /* PBXContainerItemProxy */;
 		};
 		A51596961D49AC2500402B66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A51596741D49AC2500402B66 /* touchDrawCircle */;
+			target = A51596741D49AC2500402B66 /* TouchPlay */;
 			targetProxy = A51596951D49AC2500402B66 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -443,7 +459,7 @@
 				INFOPLIST_FILE = touchDrawCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircle;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TouchPlay;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -461,7 +477,7 @@
 				INFOPLIST_FILE = touchDrawCircle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircle;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TouchPlay;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -473,8 +489,8 @@
 				INFOPLIST_FILE = touchDrawCircleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/touchDrawCircle.app/touchDrawCircle";
+				PRODUCT_NAME = TouchPlay;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchPlay.app/TouchPlay";
 			};
 			name = Debug;
 		};
@@ -485,8 +501,8 @@
 				INFOPLIST_FILE = touchDrawCircleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircleTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/touchDrawCircle.app/touchDrawCircle";
+				PRODUCT_NAME = TouchPlay;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TouchPlay.app/TouchPlay";
 			};
 			name = Release;
 		};
@@ -496,7 +512,7 @@
 				INFOPLIST_FILE = touchDrawCircleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TouchPlay;
 				TEST_TARGET_NAME = touchDrawCircle;
 			};
 			name = Debug;
@@ -507,7 +523,7 @@
 				INFOPLIST_FILE = touchDrawCircleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = adam.s.develops.touchDrawCircleUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TouchPlay;
 				TEST_TARGET_NAME = touchDrawCircle;
 			};
 			name = Release;
@@ -515,7 +531,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A51596701D49AC2500402B66 /* Build configuration list for PBXProject "touchDrawCircle" */ = {
+		A51596701D49AC2500402B66 /* Build configuration list for PBXProject "TouchPlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A515969B1D49AC2500402B66 /* Debug */,
@@ -524,7 +540,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A515969D1D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircle" */ = {
+		A515969D1D49AC2500402B66 /* Build configuration list for PBXNativeTarget "TouchPlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A515969E1D49AC2500402B66 /* Debug */,
@@ -533,7 +549,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A51596A01D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircleTests" */ = {
+		A51596A01D49AC2500402B66 /* Build configuration list for PBXNativeTarget "TouchPlayTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A51596A11D49AC2500402B66 /* Debug */,
@@ -542,7 +558,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A51596A31D49AC2500402B66 /* Build configuration list for PBXNativeTarget "touchDrawCircleUITests" */ = {
+		A51596A31D49AC2500402B66 /* Build configuration list for PBXNativeTarget "TouchPlayUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A51596A41D49AC2500402B66 /* Debug */,

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:touchDrawCircle.xcodeproj">
+      location = "self:/Development/Coding_Dojo/osx-ios/touchDrawCircle/TouchPlay.xcodeproj">
    </FileRef>
 </Workspace>

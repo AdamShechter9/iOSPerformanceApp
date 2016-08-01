@@ -30,21 +30,50 @@
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vad-Db-PFr">
                                 <rect key="frame" x="0.0" y="559" width="600" height="44"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.25" height="1"/>
                                 <items>
-                                    <barButtonItem title="settings" id="7Db-wS-wQA">
+                                    <barButtonItem image="settings_sm" id="7Db-wS-wQA">
+                                        <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <segue destination="CKk-sN-ADI" kind="presentation" id="9tL-If-0Qc"/>
+                                            <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" id="bDt-Tk-rfg"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="PLAY" id="WE9-5G-7Pn">
+                                    <barButtonItem image="play_pause_sm" id="WE9-5G-7Pn">
+                                        <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="playButtonPressed:" destination="BYZ-38-t0r" id="dN7-dh-qPq"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="STOP" id="jtE-iQ-Rna">
-                                        <connections>
-                                            <action selector="stopButtonPressed:" destination="BYZ-38-t0r" id="I9s-1v-hnl"/>
-                                        </connections>
+                                    <barButtonItem style="plain" id="LJD-oZ-cgO">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="0" id="EIg-5g-b4a">
+                                            <rect key="frame" x="129" y="7" width="69" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="off"/>
+                                                <segment title="On"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="accelSwitchControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="gEI-da-w1c"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="NJS-Uv-ecu" userLabel="Loop">
+                                        <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="4" id="n8a-G2-UwQ">
+                                            <rect key="frame" x="208" y="8" width="94" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="loopSelectorValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Xf1-hN-LY8"/>
+                                            </connections>
+                                        </stepper>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="3f8-1P-YCa" userLabel="Oscillator">
+                                        <stepper key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="4" id="NdI-Mr-8FI">
+                                            <rect key="frame" x="312" y="8" width="94" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <connections>
+                                                <action selector="waveOscValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="dMn-JN-2LC"/>
+                                            </connections>
+                                        </stepper>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -92,6 +121,7 @@
                         <outlet property="backImageView" destination="7vi-pY-rwH" id="EuS-qh-ioD"/>
                         <outlet property="imageView1" destination="d0n-hW-KCu" id="TFz-Sq-O7I"/>
                         <outlet property="panRecognizer" destination="Nfw-Kj-zHN" id="Xmf-e9-Lfr"/>
+                        <segue destination="xnl-Mw-fxb" kind="presentation" identifier="settingsSegue" id="eiy-Kx-MC1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,12 +144,66 @@
                     <view key="view" contentMode="scaleToFill" id="kM9-uY-i0r">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-YB-I55">
+                                <rect key="frame" x="241" y="96" width="118" height="31"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-rP-Fe8">
+                                <rect key="frame" x="241" y="144" width="118" height="31"/>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Nl4-Hu-YOH">
+                                <rect key="frame" x="241" y="189" width="118" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThV-AD-EdO">
+                                <rect key="frame" x="187" y="100" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="effects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PB9-Uo-yWz">
+                                <rect key="frame" x="168" y="148" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Synth Filter Q" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYe-gb-iKT">
+                                <rect key="frame" x="118" y="193" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3hH-E6-wHx">
+                        <barButtonItem key="leftBarButtonItem" title="back" id="rvg-Ji-N8T"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEN-ys-2tR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1783" y="456"/>
+            <point key="canvasLocation" x="2694" y="456"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="L9X-HM-xL4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xnl-Mw-fxb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uZg-wK-lkH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CKk-sN-ADI" kind="relationship" relationship="rootViewController" id="XUT-wB-JG8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="byH-C5-SB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1882" y="456"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play_pause_sm" width="40" height="40"/>
+        <image name="settings_sm" width="49" height="49"/>
+    </resources>
 </document>

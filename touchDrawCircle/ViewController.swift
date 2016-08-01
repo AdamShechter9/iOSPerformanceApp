@@ -6,55 +6,131 @@
 //  Copyright © 2016 Adam Shechter. All rights reserved.
 //
 
+//
+//TO DO
+//- add more loop files. scroll through 3 or 4
+//- create delegate for settings page
+//- add ability to change Q on filter
+//
+
 import UIKit
 import AudioKit
+import CoreMotion
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, settingsViewControllerDelegate {
     
     // let mySampler = samplerPlayer(loop: true, rate: 1, pitch: 1)
     let mySynth = simpleSynthClass(amp: 0.5, freq: 220)
     var swiped = false
     var lastPoint = CGPoint.zero
     
+    var cutoff = 0.0
+    var delayReverb = 0.0
+    var loopFileSelect = 1
+    var waveFormSelect = 1
+    var isPlaying = false
+    
+    // boolean to make sure synth doesn't play when we're in settings page
+    var inSettingsPage = false
+    var motionSelectorSwitch = 0
+    
+    @IBAction func accelSwitchControlChanged(sender: UISegmentedControl) {
+        motionSelectorSwitch = sender.selectedSegmentIndex
+        if motionSelectorSwitch == 0
+        {
+            self.cutoff = 0.0
+            self.delayReverb = 0.0
+            mySynth.changeDelayReverb(0)
+            mySynth.changeFilterCutoff(0.5)
+        }
+        else
+        {
+            print("motion activated")
+        }
+    }
+    // CoreMotion motion manager
+    let manager = CMMotionManager()
+    
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var imageView1: UIImageView!
     
     @IBAction func playButtonPressed(sender: UIBarButtonItem) {
-        print("play button pressed")
-        // mySampler.playSamplerPlayer(true)
-        mySynth.playSamplerPlayer(true)
+        print("play/stop button pressed")
+        isPlaying = !isPlaying
+        mySynth.playSamplerPlayer(isPlaying)
     }
     
-    @IBAction func stopButtonPressed(sender: UIBarButtonItem) {
-        print("stop button pressed")
-        mySynth.playSamplerPlayer(false)
+
+    @IBAction func loopSelectorValueChanged(sender: UIStepper) {
+        loopFileSelect = Int(sender.value)
+        print("loopFile \(loopFileSelect)")
+        mySynth.changeLoopFile(loopFileSelect)
+        
     }
+    
+    @IBAction func waveOscValueChange(sender: UIStepper) {
+        waveFormSelect = Int(sender.value)
+        print("Waveform \(waveFormSelect)")
+        mySynth.waveformSynthChange(waveFormSelect)
+    }
+    
+    @IBAction func settingsButtonPressed(sender: UIBarButtonItem) {
+        // settings page
+        performSegueWithIdentifier("settingsSegue", sender: self)
+    }
+// -----------------------------------------------------------------
+    func filterMovement(cutoffSlider:Double)
+    {
+        
+        let newCutoff = Double(((cutoffSlider) + 1) / 2)
+        self.mySynth.changeFilterCutoff(newCutoff)
+    }
+    
+    func effectsMovement(effectsSlider:Double)
+    {
+        let newEFX = Double((effectsSlider))
+        self.mySynth.changeDelayReverb(newEFX)
+    }
+    
+    
+    
+    
 // -----------------------------------------------------------------
     @IBOutlet var panRecognizer: UIPanGestureRecognizer!
 
     
     @IBAction func panGestureAction(sender: UIPanGestureRecognizer) {
-        panRecognizer.setTranslation(CGPointZero, inView: self.view)
-        let location = panRecognizer.locationInView(self.view)
-        print("location x \(location.x)")
-        print("location y \(location.y)")
+        if inSettingsPage == false
+        {
+            panRecognizer.setTranslation(CGPointZero, inView: self.view)
+            let location = panRecognizer.locationInView(self.view)
+            print("location x \(location.x)")
+            print("location y \(location.y)")
+            
+            var adjustPoint = CGPoint()
+            adjustPoint.x = location.x
+            adjustPoint.y = location.y
+            adjustPoint.y *= 1.05
+            generateRadial(adjustPoint)
+            circleFadeIn()
+            backgroundAnimStart()
+            
+            var note = abs(Double(location.y / view.frame.height - 1.0))
+            note = pow((note * 50), 2) + 50
+            print(note)
+            mySynth.noteOnSynth(note)
+            print("log scale result \(note)")
+            let cutoff = Double(adjustPoint.x * 15)
+            mySynth.lpFilterFreq(cutoff)
+        }
         
-        var adjustPoint = CGPoint()
-        adjustPoint.x = location.x
-        adjustPoint.y = location.y
-        adjustPoint.y *= 1.05
-        generateRadial(adjustPoint)
         
-        var note = abs(Double(location.y / view.frame.height - 1.0))
-        note = pow((note * 50), 2) + 50
-        print(note)
-        mySynth.noteOnSynth(note)
-        print("log scale result \(note)")
-        let cutoff = Double(adjustPoint.x * 15)
-        mySynth.lpFilterFreq(cutoff)
         if panRecognizer.state == UIGestureRecognizerState.Ended
         {
-             mySynth.noteOffSynth()
+            dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+                self.mySynth.noteOffSynth()
+            }
+            
             print("fading out")
             circleFadeOut()
             backgroundAnimEnd()
@@ -65,17 +141,28 @@ class ViewController: UIViewController {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         swiped = false
-        if let touch = touches.first as UITouch! {
-            let location = touch.locationInView(self.view)
-            lastPoint = touch.locationInView(self.view)
-            generateRadial(location)
-            print("fading in")
-            circleFadeIn()
-            backgroundAnimStart()
-            var note = abs(Double(location.y / view.frame.height - 1.0))
-            note = pow((note * 50), 2) + 50
-            print(note)
-            mySynth.noteOnSynth(note)
+        if inSettingsPage == false{
+            if let touch = touches.first as UITouch! {
+                let location = touch.locationInView(self.view)
+                print("location x \(location.x)")
+                print("location y \(location.y)")
+                
+                var adjustPoint = CGPoint()
+                adjustPoint.x = location.x
+                adjustPoint.y = location.y
+                adjustPoint.y *= 1.05
+                generateRadial(adjustPoint)
+                circleFadeIn()
+                backgroundAnimStart()
+                
+                var note = abs(Double(location.y / view.frame.height - 1.0))
+                note = pow((note * 50), 2) + 50
+                print(note)
+                mySynth.noteOnSynth(note)
+                print("log scale result \(note)")
+                let cutoff = Double(adjustPoint.x * 15)
+                mySynth.lpFilterFreq(cutoff)
+            }
         }
     }
     
@@ -84,7 +171,9 @@ class ViewController: UIViewController {
     
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        mySynth.noteOffSynth()
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+            self.mySynth.noteOffSynth()
+        }
         print("fading out")
         circleFadeOut()
         backgroundAnimEnd()
@@ -95,6 +184,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.blackColor()
         // backgroundContinuousAnim()
+        accelInit()
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,6 +192,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func pressedBackButton(controller: UIViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 // -----------------------------------------------------------------
     func generateRadial(center: CGPoint)
@@ -111,12 +204,12 @@ class ViewController: UIViewController {
         var colorSpace: CGColorSpaceRef
         
         let locations_num: size_t = 3
-        let locations: [CGFloat] = [0.0, 0.2, 0.4]
+        let locations: [CGFloat] = [0.0, 0.1, 0.3]
         let redRandom = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
         let grnRandom = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
         let bluRandom = CGFloat(Float(arc4random()) / Float(UINT32_MAX))
-        let components: [CGFloat] = [redRandom, grnRandom, bluRandom, 0.2,
-                                     redRandom, grnRandom, bluRandom, 1.0,
+        let components: [CGFloat] = [redRandom, grnRandom, bluRandom, 0.4,
+                                     redRandom, grnRandom, bluRandom, 0.7,
                                      redRandom, grnRandom, bluRandom, 0.0
                                     ]
 //        let locations_num: size_t = 5
@@ -167,7 +260,7 @@ class ViewController: UIViewController {
         fadeIn.delegate = imageView1
         fadeIn.fromValue = 0
         fadeIn.toValue = 1
-        fadeIn.duration = 0.3
+        fadeIn.duration = 0.15
         imageView1.layer.addAnimation(fadeIn, forKey: "fade")
     }
     
@@ -177,7 +270,7 @@ class ViewController: UIViewController {
         fadeOut.delegate = imageView1
         fadeOut.fromValue = 1
         fadeOut.toValue = 0
-        fadeOut.duration = 0.3
+        fadeOut.duration = 0.15
         fadeOut.fillMode = kCAFillModeForwards
         fadeOut.removedOnCompletion = true
         imageView1.layer.addAnimation(fadeOut, forKey: "fade")
@@ -191,7 +284,7 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.view.backgroundColor = UIColor.blackColor()
             }) { (Bool) -> Void in
-            UIView.animateWithDuration(0.2, animations: { () -> Void in
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
                 self.view.backgroundColor = UIColor.init(colorLiteralRed: redRandom, green: grnRandom, blue: bluRandom, alpha: 1)
                 }, completion: nil)
             }
@@ -206,7 +299,7 @@ class ViewController: UIViewController {
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.view.backgroundColor = UIColor.init(colorLiteralRed: redRandom, green: grnRandom, blue: bluRandom, alpha: 1)
             }) { (Bool) -> Void in
-                UIView.animateWithDuration(0.2, animations: { () -> Void in
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
                     self.view.backgroundColor = UIColor.blackColor()
                     }, completion:nil)
         }
@@ -220,6 +313,45 @@ class ViewController: UIViewController {
             self.view.backgroundColor = UIColor.grayColor()
             self.view.backgroundColor = UIColor.redColor()
             }, completion: nil)
+    }
+    
+    
+// -----------------------------------------------------------------
+    
+    func accelInit()
+    {
+        
+        print ("acceloremeter initializing")
+        manager.startAccelerometerUpdates()
+        manager.accelerometerUpdateInterval = 0.1
+        manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue())
+        {
+            (data, error) in
+//            print (data?.acceleration.x)
+//            print (data?.acceleration.y)
+//            print (data?.acceleration.z)
+            // print (self.motionSelectorSwitch)
+            if self.motionSelectorSwitch == 0
+            {
+                // print("accelerometer off")
+            }
+            else if self.motionSelectorSwitch == 1
+            {
+                // filter and efx controllers
+                self.cutoff = ((data?.acceleration.x)! + 1) / 2
+                self.delayReverb = (data?.acceleration.y)!
+                // self.volSliderValue.value =  Float((data?.acceleration.y)! + 1) / 2 * 0.75
+                
+                let newCutoff = Double(((data?.acceleration.x)! + 1) / 2)
+                self.mySynth.changeFilterCutoff(newCutoff)
+                
+                let newEFX = Double((data?.acceleration.y)!)
+                self.mySynth.changeDelayReverb(newEFX)
+                
+            }
+            
+        }
+        
     }
     
 }

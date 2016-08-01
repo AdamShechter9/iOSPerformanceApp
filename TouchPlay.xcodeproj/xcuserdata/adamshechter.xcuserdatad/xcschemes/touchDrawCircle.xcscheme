@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A51596741D49AC2500402B66"
-               BuildableName = "touchDrawCircle.app"
-               BlueprintName = "touchDrawCircle"
-               ReferencedContainer = "container:touchDrawCircle.xcodeproj">
+               BuildableName = "TouchPlay.app"
+               BlueprintName = "TouchPlay"
+               ReferencedContainer = "container:TouchPlay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A51596881D49AC2500402B66"
-               BuildableName = "touchDrawCircleTests.xctest"
-               BlueprintName = "touchDrawCircleTests"
-               ReferencedContainer = "container:touchDrawCircle.xcodeproj">
+               BuildableName = "TouchPlay.xctest"
+               BlueprintName = "TouchPlayTests"
+               ReferencedContainer = "container:TouchPlay.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A51596931D49AC2500402B66"
-               BuildableName = "touchDrawCircleUITests.xctest"
-               BlueprintName = "touchDrawCircleUITests"
-               ReferencedContainer = "container:touchDrawCircle.xcodeproj">
+               BuildableName = "TouchPlay.xctest"
+               BlueprintName = "TouchPlayUITests"
+               ReferencedContainer = "container:TouchPlay.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A51596741D49AC2500402B66"
-            BuildableName = "touchDrawCircle.app"
-            BlueprintName = "touchDrawCircle"
-            ReferencedContainer = "container:touchDrawCircle.xcodeproj">
+            BuildableName = "TouchPlay.app"
+            BlueprintName = "TouchPlay"
+            ReferencedContainer = "container:TouchPlay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A51596741D49AC2500402B66"
-            BuildableName = "touchDrawCircle.app"
-            BlueprintName = "touchDrawCircle"
-            ReferencedContainer = "container:touchDrawCircle.xcodeproj">
+            BuildableName = "TouchPlay.app"
+            BlueprintName = "TouchPlay"
+            ReferencedContainer = "container:TouchPlay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A51596741D49AC2500402B66"
-            BuildableName = "touchDrawCircle.app"
-            BlueprintName = "touchDrawCircle"
-            ReferencedContainer = "container:touchDrawCircle.xcodeproj">
+            BuildableName = "TouchPlay.app"
+            BlueprintName = "TouchPlay"
+            ReferencedContainer = "container:TouchPlay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
