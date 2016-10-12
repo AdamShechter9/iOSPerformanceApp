@@ -21,7 +21,7 @@ class simpleSynthClass {
     let lpfSynth: AKLowPassFilter
     var delayUnitSynth: AKDelay
     var currentAmp: Double
-    var currentRampTime = 0.02
+    var currentRampTime = 0.001
     var freq: Double
     var play2: AKAudioPlayer
     var filterPlayer: AKLowPassFilter
@@ -29,6 +29,7 @@ class simpleSynthClass {
     var delayUnit: AKDelay
     var reverbUnit: AKReverb
     var playState = false
+    var synthLPFResonance = 10.0
     var paramaterState: [String: Double] = ["freq1": 20000.0, "freq2": 0.0, "vol": 0.7, "delay": 0, "reverb": 0]
     var waveformSwitchVal = 1
     
@@ -53,7 +54,7 @@ class simpleSynthClass {
         oscMixer.volume = 0.5
         
         self.lpfSynth = AKLowPassFilter(oscMixer)
-        self.lpfSynth.resonance = 15
+        self.lpfSynth.resonance = synthLPFResonance
         
         delayUnitSynth = AKDelay(lpfSynth)
         delayUnitSynth.time = 0.1
@@ -99,6 +100,18 @@ class simpleSynthClass {
         print("filter cutoff at \(cutoff)")
         lpfSynth.cutoffFrequency = cutoff
         
+    }
+    
+    func lpFilterRes(resonance: Double)
+    {
+        print("filter resonance")
+        lpfSynth.resonance = resonance
+    }
+    
+    func synthAttackRampTime(attack: Double)
+    {
+        print("synth attack time \(attack)")
+        currentRampTime = attack
     }
     
     func startAudio()
@@ -192,13 +205,10 @@ class simpleSynthClass {
     
     func noteOffSynth()
     {
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
-            self.oscillatorTriAK.amplitude = 0
-            self.oscillatorSqrAK.amplitude = 0
-            self.oscillatorSawAK.amplitude = 0
-            self.noiseAK.amplitude = 0
-        }
-
+        self.oscillatorTriAK.amplitude = 0
+        self.oscillatorSqrAK.amplitude = 0
+        self.oscillatorSawAK.amplitude = 0
+        self.noiseAK.amplitude = 0
     }
     
     func changeLoopFile(loopFile: Int)
@@ -251,8 +261,7 @@ class simpleSynthClass {
         if cutoff > 0.5
             // High Pass Filter Activated
         {
-            
-            paramaterState["freq2"] = ((cutoff - 0.5) * 2) * 7000
+            paramaterState["freq2"] = ((cutoff - 0.5) * 2) * 4000
             filterPlayer2.cutoffFrequency = paramaterState["freq2"]!
             if paramaterState["freq2"] > 5000
             {
@@ -273,7 +282,7 @@ class simpleSynthClass {
         else if cutoff < 0.5
             // LowPass Filter Activated
         {
-            paramaterState["freq1"] = cutoff * 10000
+            paramaterState["freq1"] = cutoff * 9000
             filterPlayer.cutoffFrequency = paramaterState["freq1"]!
             if paramaterState["freq1"] > 5000
             {

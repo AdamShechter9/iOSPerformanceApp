@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="touchDrawCircle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="TouchPlay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-pY-rwH" userLabel="backimg">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7vi-pY-rwH" userLabel="backimg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="559"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d0n-hW-KCu">
@@ -30,21 +30,22 @@
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vad-Db-PFr">
                                 <rect key="frame" x="0.0" y="559" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.25" height="1"/>
                                 <items>
-                                    <barButtonItem image="settings_sm" id="7Db-wS-wQA">
+                                    <barButtonItem image="settings_sm" id="7Db-wS-wQA" userLabel="settings">
                                         <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" id="bDt-Tk-rfg"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="play_pause_sm" id="WE9-5G-7Pn">
+                                    <barButtonItem image="play_pause_sm" id="WE9-5G-7Pn" userLabel="loop play pause">
                                         <color key="tintColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="playButtonPressed:" destination="BYZ-38-t0r" id="dN7-dh-qPq"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" id="LJD-oZ-cgO">
+                                    <barButtonItem style="plain" id="LJD-oZ-cgO" userLabel="accel on off">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="0" id="EIg-5g-b4a">
                                             <rect key="frame" x="129" y="7" width="69" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -133,10 +134,10 @@
             </objects>
             <point key="canvasLocation" x="1093" y="456"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="KUb-zK-qGR">
             <objects>
-                <viewController id="CKk-sN-ADI" sceneMemberID="viewController">
+                <viewController id="CKk-sN-ADI" customClass="settingsViewController" customModule="TouchPlay" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Oq-Lr-01n"/>
                         <viewControllerLayoutGuide type="bottom" id="EFu-RI-kBm"/>
@@ -145,39 +146,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-YB-I55">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="Bcm-YB-I55">
                                 <rect key="frame" x="241" y="96" width="118" height="31"/>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-rP-Fe8">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.01" maxValue="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="lGg-rP-Fe8">
                                 <rect key="frame" x="241" y="144" width="118" height="31"/>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Nl4-Hu-YOH">
-                                <rect key="frame" x="241" y="189" width="118" height="31"/>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThV-AD-EdO">
-                                <rect key="frame" x="187" y="100" width="35" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Synth Filter Resonance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThV-AD-EdO">
+                                <rect key="frame" x="46" y="100" width="176" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="effects" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PB9-Uo-yWz">
-                                <rect key="frame" x="168" y="148" width="54" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Synth Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PB9-Uo-yWz">
+                                <rect key="frame" x="124" y="148" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Synth Filter Q" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYe-gb-iKT">
-                                <rect key="frame" x="118" y="193" width="104" height="21"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="XJt-kj-bqD">
+                                <rect key="frame" x="244" y="193" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn Circle on/off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBI-9u-fsQ">
+                                <rect key="frame" x="90" y="198" width="133" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Lights" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1K-CK-ji5">
+                                <rect key="frame" x="79" y="245" width="144" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cII-Dl-jo0">
+                                <rect key="frame" x="244" y="240" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dBI-9u-fsQ" firstAttribute="top" secondItem="5Oq-Lr-01n" secondAttribute="bottom" constant="134" id="CeU-0w-2iV"/>
+                            <constraint firstItem="XJt-kj-bqD" firstAttribute="top" secondItem="5Oq-Lr-01n" secondAttribute="bottom" constant="173" id="PIe-cr-511"/>
+                            <constraint firstItem="cII-Dl-jo0" firstAttribute="leading" secondItem="kM9-uY-i0r" secondAttribute="leadingMargin" constant="224" id="T1Q-94-l6i"/>
+                            <constraint firstItem="cII-Dl-jo0" firstAttribute="top" secondItem="5Oq-Lr-01n" secondAttribute="bottom" constant="176" id="Tnq-pa-cN4"/>
+                            <constraint firstItem="o1K-CK-ji5" firstAttribute="top" secondItem="5Oq-Lr-01n" secondAttribute="bottom" constant="181" id="YZc-eO-ljj"/>
+                            <constraint firstItem="XJt-kj-bqD" firstAttribute="top" secondItem="5Oq-Lr-01n" secondAttribute="bottom" constant="129" id="bzs-lv-Cad"/>
+                            <constraint firstItem="XJt-kj-bqD" firstAttribute="leading" secondItem="kM9-uY-i0r" secondAttribute="leadingMargin" constant="224" id="ihb-Wb-En7"/>
+                            <constraint firstItem="o1K-CK-ji5" firstAttribute="leading" secondItem="kM9-uY-i0r" secondAttribute="leadingMargin" constant="59" id="lgm-o4-SF5"/>
+                            <constraint firstItem="XJt-kj-bqD" firstAttribute="leading" secondItem="kM9-uY-i0r" secondAttribute="leadingMargin" constant="223" id="pS6-I4-Rep"/>
+                            <constraint firstItem="dBI-9u-fsQ" firstAttribute="leading" secondItem="kM9-uY-i0r" secondAttribute="leadingMargin" constant="70" id="uUr-X7-C1B"/>
+                            <constraint firstItem="dBI-9u-fsQ" firstAttribute="leading" secondItem="kM9-uY-i0r" secondAttribute="leadingMargin" constant="69" id="zik-N5-12q"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="zik-N5-12q"/>
+                                <exclude reference="PIe-cr-511"/>
+                                <exclude reference="pS6-I4-Rep"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="3hH-E6-wHx">
-                        <barButtonItem key="leftBarButtonItem" title="back" id="rvg-Ji-N8T"/>
+                        <barButtonItem key="leftBarButtonItem" title="back" id="rvg-Ji-N8T">
+                            <connections>
+                                <action selector="backButtonPressedAction:" destination="CKk-sN-ADI" id="FPJ-sq-bZW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="backgroundLightSwitch" destination="cII-Dl-jo0" id="hb9-T6-Nmp"/>
+                        <outlet property="drawCircleSwitch" destination="XJt-kj-bqD" id="dtv-s2-5mv"/>
+                        <outlet property="filterResonanceSliderValue" destination="Bcm-YB-I55" id="dRB-9r-ltT"/>
+                        <outlet property="synthAttackSliderValue" destination="lGg-rP-Fe8" id="MHI-jj-16A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEN-ys-2tR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
